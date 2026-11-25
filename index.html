@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edexcel Maths — Progressive Exam Practice</title>
+<style>
+:root{--bg:#0a1020;--panel:#121c35;--panel2:#192747;--line:#304269;--text:#f4f7ff;--muted:#aebbd8;--blue:#648bff;--green:#42c994}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,Arial}header{padding:28px 18px;text-align:center;background:linear-gradient(135deg,#1b3264,#111a31);border-bottom:1px solid var(--line)}h1{margin:0;font-size:clamp(24px,5vw,36px)}header p{color:var(--muted);margin:8px 0 0}
+nav{display:flex;gap:8px;overflow:auto;padding:10px;background:#0e172c;position:sticky;top:0;z-index:4}button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px;font-weight:700;color:white;background:#304574}nav button.active,.primary{background:var(--blue)}main{max-width:1050px;margin:auto;padding:18px}.page.hidden{display:none}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin:0 0 16px}.muted{color:var(--muted)}.stats{display:flex;gap:18px;flex-wrap:wrap}.stats b{color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.tile{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:left}.tile small{display:block;color:var(--muted);margin-top:5px}.tile:hover{border-color:var(--blue)}.pill{display:inline-block;border-radius:99px;padding:4px 9px;background:#27395f;color:#dce6ff;font-size:12px;margin:2px}.question{font-size:19px;background:#0c1529;border:1px solid var(--line);border-radius:12px;padding:18px;margin:15px 0;white-space:pre-wrap}.actions{display:flex;gap:8px;flex-wrap:wrap}.secondary{background:#263858}.solution{background:#142d2b;border:1px solid #286a59;border-radius:12px;padding:15px;margin-top:12px;white-space:pre-wrap}.answer{color:#c7f5df;font-weight:700}.progress{height:9px;background:#273653;border-radius:20px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--green);width:0%}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}select,input{background:#0c1529;color:white;border:1px solid var(--line);border-radius:9px;padding:10px;width:100%;margin:6px 0}label{display:block;color:var(--muted);font-size:14px}.notice{font-size:13px;color:var(--muted)}footer{text-align:center;color:var(--muted);padding:28px}
+</style></head><body>
+<header><h1>Edexcel A-Level Maths</h1><p>Progressive exam practice · Pure · Statistics · Mechanics</p></header>
+<nav><button class="active" onclick="page('home',this)">Home</button><button onclick="page('topics',this)">Topic practice</button><button onclick="page('exam',this)">Progressive exam</button><button onclick="page('papers',this)">Practice papers</button></nav>
+<main>
+<section id="home" class="page"><div class="panel"><h2>Build up to full A-level difficulty</h2><p class="muted">Questions move from foundation skills to multi-step, exam-style problems. Each question has a worked solution and a self-mark step.</p><div class="stats"><span>Answered: <b id="answered">0</b></span><span>Correct: <b id="correct">0</b></span><span>Streak: <b id="streak">0</b></span></div></div>
+<div class="panel"><h2>How progressive mode works</h2><div class="progress"><span id="homeProgress"></span></div><p><span class="pill">Stage 1</span> Core skills → <span class="pill">Stage 2</span> Standard exam questions → <span class="pill">Stage 3</span> Challenging multi-step questions.</p><p class="notice">These are original practice questions written in an Edexcel-style format, not official Pearson past-paper questions. The site is a revision aid; check answers and methods against your course materials.</p><button class="primary" onclick="page('exam',document.querySelectorAll('nav button')[2])">Start progressive exam practice</button></div></section>
+<section id="topics" class="page hidden"><div class="panel"><h2>Choose a topic</h2><p class="muted">Select a topic to practise questions that increase in difficulty.</p><div id="topicGrid" class="grid"></div></div></section>
+<section id="exam" class="page hidden"><div class="panel"><div class="row"><div><h2 id="examTitle">Progressive exam practice</h2><span class="pill" id="stage">Stage 1 · Foundation</span></div><div><span class="pill" id="qcount">Question 1 of 12</span></div></div><div class="progress"><span id="examProgress"></span></div><div id="question" class="question">Press Start to begin your progressive practice.</div><div class="actions"><button class="primary" onclick="startExam()">Start / Restart</button><button class="secondary" onclick="reveal()">Show worked solution</button><button class="secondary" onclick="mark(true)">I got it right</button><button class="secondary" onclick="mark(false)">I need more practice</button><button class="secondary" onclick="nextQ()">Next question →</button></div><div id="solution"></div><p class="notice">Self-marking: use the worked solution to check your method and final answer before marking.</p></div></section>
+<section id="papers" class="page hidden"><div class="panel"><h2>Practice paper builder</h2><p class="muted">Build a 12-question mini-paper with a deliberate difficulty ramp.</p><label>Paper</label><select id="paperType"><option value="pure">Pure Paper 1 / 2 style</option><option value="statsmech">Statistics & Mechanics style</option><option value="mixed">Mixed Year 13 test</option></select><label>Difficulty ramp</label><select id="paperRamp"><option value="ramp">Progressively harder (recommended)</option><option value="hard">Hard throughout</option></select><button class="primary" onclick="buildPaper()">Generate practice paper</button></div><div class="panel hidden" id="paperResult"><h3 id="paperName"></h3><ol id="paperList"></ol></div></section>
+</main><footer>Independent revision resource · Not affiliated with Pearson Edexcel</footer>
+<script>
+const topics={
+"Pure":["Proof","Algebra and functions","Coordinate geometry","Sequences and series","Binomial expansion","Trigonometry and radians","Exponentials and logarithms","Differentiation","Integration","Numerical methods","Vectors","Parametric equations","Differential equations"],
+"Statistics":["Sampling","Data presentation and interpretation","Probability","Statistical distributions","Binomial distribution","Normal distribution","Hypothesis testing","Correlation and regression"],
+"Mechanics":["Quantities and units","Kinematics","SUVAT","Variable acceleration","Forces and Newton's laws","Friction and inclined planes","Connected particles","Projectiles","Moments and equilibrium"]
+};
+const bank={
+"Algebra and functions":[
+["Solve 3x − 7 = 11.","3x=18, so x=6."],
+["Solve x² − 7x + 12 = 0.","(x−3)(x−4)=0, so x=3 or x=4."],
+["The curve y=x²−6x+5 is transformed to y=f(x−2)+3. State the new equation and its stationary point.","f(x−2)+3=(x−2)²−6(x−2)+5+3=x²−10x+22. Complete the square: (x−5)²−3. Stationary point (5,−3)."]
+],
+"Coordinate geometry":[
+["Find the gradient of the line through (2,3) and (6,11).","m=(11−3)/(6−2)=8/4=2."],
+["Find the equation of the line perpendicular to y=2x−5 and passing through (4,1).","Perpendicular gradient = −1/2. y−1=−(1/2)(x−4), hence y=−x/2+3."],
+["A circle has centre (2,−1) and passes through (5,3). Find its equation and the tangent at (5,3).","r²=(5−2)²+(3+1)²=25. Circle: (x−2)²+(y+1)²=25. Radius gradient=4/3, so tangent gradient=−3/4. y−3=−3/4(x−5)."]
+],
+"Sequences and series":[
+["Find the 10th term of 4, 7, 10, 13, …","Arithmetic sequence with a=4,d=3. u₁₀=4+9(3)=31."],
+["Find the sum of the first 20 terms of an arithmetic sequence with a=5 and d=2.","S₂₀=20/2[2(5)+19(2)]=10(48)=480."],
+["A geometric series has first term 12 and common ratio 0.8. Find the least n for which Sₙ exceeds 50.","Sₙ=12(1−0.8ⁿ)/(1−0.8)=60(1−0.8ⁿ). Need 60(1−0.8ⁿ)>50, so 0.8ⁿ<1/6. n> ln(1/6)/ln(0.8)≈8.03. Least integer n=9."]
+],
+"Trigonometry and radians":[
+["Convert 150° to radians.","150π/180=5π/6."],
+["Solve 2sin x=1 for 0°≤x<360°.","sin x=1/2, so x=30° or 150°."],
+["Solve 2cos²x−3sin x=0 for 0≤x<2π.","Use cos²x=1−sin²x. 2(1−sin²x)−3sin x=0, so 2s²+3s−2=0=(2s−1)(s+2). Thus sin x=1/2. x=π/6 or 5π/6."]
+],
+"Exponentials and logarithms":[
+["Solve 2^x=16.","16=2⁴, so x=4."],
+["Solve ln(3x−2)=ln 10.","3x−2=10, so x=4 (valid since 3x−2>0)."],
+["Solve e^(2x)−5e^x+6=0.","Let u=e^x. u²−5u+6=0, so u=2 or 3. Hence x=ln2 or ln3."]
+],
+"Differentiation":[
+["Differentiate y=5x³−4x²+7.","dy/dx=15x²−8x."],
+["Find the stationary points of y=x³−3x²−9x+4.","dy/dx=3x²−6x−9=3(x−3)(x+1). x=−1 or 3. y(−1)=9; y(3)=−23. Points (−1,9),(3,−23)."],
+["Given y=(2x+1)^5, find d²y/dx².","dy/dx=10(2x+1)^4. Differentiate again: d²y/dx²=80(2x+1)^3."]
+],
+"Integration":[
+["Find ∫(6x²−4x) dx.","2x³−2x²+C."],
+["Find the area under y=3x² from x=0 to x=2.","∫₀²3x²dx=[x³]₀²=8 square units."],
+["Evaluate ∫₂⁴ x ln x dx.","By parts, u=ln x, dv=x dx. Integral=(x²/2)ln x−∫x/2 dx=(x²/2)ln x−x²/4. Evaluate 2 to 4: (8ln4−4)−(2ln2−1)=14ln2−3."]
+],
+"Vectors":[
+["Find the magnitude of vector (3,4).","√(3²+4²)=5."],
+["Find the vector from A(1,2,−1) to B(4,0,5).","AB=b−a=(3,−2,6)."],
+["The lines r=(1,0,2)+λ(2,1,−1) and r=(5,2,0)+μ(−1,0,1) intersect. Find λ and μ, or show they do not.","Equate components: 1+2λ=5−μ, λ=2, 2−λ=μ. From λ=2, μ=0; first equation gives 5=5, so they intersect at (5,2,0)."]
+],
+"Probability":[
+["A fair die is rolled. Find P(score greater than 4).","Outcomes 5 or 6, so probability=2/6=1/3."],
+["P(A)=0.4, P(B)=0.5 and A,B are independent. Find P(A∩B).","0.4×0.5=0.2."],
+["P(A)=0.6, P(B)=0.5 and P(A∩B)=0.3. Determine whether A and B are independent.","P(A)P(B)=0.6×0.5=0.3=P(A∩B), so they are independent."]
+],
+"Binomial distribution":[
+["X~B(5,0.2). Find E(X).","E(X)=np=5(0.2)=1."],
+["X~B(8,0.3). Find P(X=2).","P(X=2)=⁸C₂(0.3)²(0.7)⁶≈0.2965."],
+["X~B(20,0.15). Find P(X≤2).","P(X≤2)=Σₖ₌₀² ²⁰Cₖ(0.15)ᵏ(0.85)²⁰⁻ᵏ≈0.4049."]
+],
+"Normal distribution":[
+["X~N(50,6²). Find the standardised value for X=62.","z=(62−50)/6=2."],
+["X~N(100,12²). Find P(X>118), using Φ(1.5)=0.9332.","z=1.5. P(X>118)=1−0.9332=0.0668."],
+["X~N(μ,8²), and P(X<70)=0.8944. Given Φ(1.25)=0.8944, find μ.","(70−μ)/8=1.25, so 70−μ=10 and μ=60."]
+],
+"Kinematics":[
+["A particle has initial velocity 4 m/s and acceleration 3 m/s² for 5 s. Find its final velocity.","v=u+at=4+3(5)=19 m/s."],
+["A particle starts from rest and accelerates at 2 m/s² for 6 s. Find its displacement.","s=ut+½at²=0+½(2)(36)=36 m."],
+["A particle moves with acceleration a=6t−4. Given v=3 when t=0 and s=0 when t=0, find s when t=2.","Integrate a: v=3t²−4t+C; v(0)=3 gives C=3. Integrate v: s=t³−2t²+3t+C₂; s(0)=0 gives C₂=0. s(2)=8−8+6=6 m."]
+],
+"Forces and Newton's laws":[
+["A 5 kg particle has resultant force 20 N. Find its acceleration.","F=ma, so a=20/5=4 m/s²."],
+["A 4 kg block rests on a smooth horizontal surface. A horizontal force of 18 N acts on it. Find its acceleration.","18=4a, so a=4.5 m/s²."],
+["A 3 kg particle is pulled up a rough plane by a 25 N force parallel to the plane. The plane is inclined at 30° and friction is 4 N down the plane. Find its acceleration. Take g=9.8.","Resolve up the plane: 25−4−3(9.8)sin30°=3a. Thus 6.3=3a and a=2.1 m/s² up the plane."]
+],
+"Moments and equilibrium":[
+["A 10 N force acts perpendicular to a pivot at 0.4 m. Find its moment.","Moment=10×0.4=4 Nm."],
+["A uniform 6 m beam is supported at its ends. Its weight is 120 N and acts at the centre. Find each reaction.","By symmetry, reactions are equal. R₁+R₂=120 and R₁=R₂, so each is 60 N."],
+["A uniform horizontal beam of length 8 m and weight 200 N is hinged at one end and supported by a vertical cable at the other. A 300 N load acts 6 m from the hinge. Find the cable tension.","Taking moments about hinge: 8T=200(4)+300(6)=2600. T=325 N."]
+]
+};
+let stats={answered:0,correct:0,streak:0},current=null,queue=[],idx=0,activeTopic=null;
+function updateStats(){['answered','correct','streak'].forEach(k=>document.getElementById(k).textContent=stats[k]);document.getElementById('homeProgress').style.width=(stats.answered?Math.min(100,stats.correct/stats.answered*100):0)+'%'}
+function page(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active')}
+function renderTopics(){let html='';for(let group in topics){html+=`<h3>${group}</h3>`+topics[group].map(t=>`<button class="tile" onclick="topicRun('${t.replaceAll("'","\\'")}')"><b>${t}</b><small>3-stage question ladder</small></button>`).join('')}document.getElementById('topicGrid').innerHTML=html}
+function getTopicBank(topic){if(bank[topic])return bank[topic];let mapped=Object.keys(bank).find(k=>topic.toLowerCase().includes(k.toLowerCase().split(' ')[0]));return bank[mapped]||[ [`${topic}: state the key definition or method, then apply it to a short example.`,`Use the relevant Edexcel definition and show each step clearly.`], [`${topic}: solve a standard multi-step problem. Explain the method and justify your answer.`,`Set out the relevant equations, substitute the given values, solve, and state the answer with units where appropriate.`], [`${topic}: an unfamiliar context combines this topic with another part of the specification. Form an equation or model, solve it, and interpret your result.`,`Identify the variables and assumptions, form the appropriate model, solve systematically, then interpret and check the result in context.`] ]}
+function makeQueue(topic,hardOnly=false){let b=getTopicBank(topic);return b.map((x,i)=>({topic,level:i+1,q:x[0],sol:x[1]}))}
+function startExam(){let pool=Object.values(topics).flat();queue=[];for(let i=0;i<12;i++){let t=pool[i%pool.length];let b=getTopicBank(t);let level=Math.min(3,Math.floor(i/4)+1);queue.push({topic:t,level,q:b[level-1][0],sol:b[level-1][1]})}idx=0;renderQ()}
+function topicRun(t){activeTopic=t;queue=makeQueue(t);idx=0;page('exam',document.querySelectorAll('nav button')[2]);document.getElementById('examTitle').textContent=t+' — Topic ladder';renderQ()}
+function renderQ(){if(!queue.length)return;current=queue[idx];let stage=current.level===1?'Stage 1 · Foundation':current.level===2?'Stage 2 · Standard exam':'Stage 3 · Challenge';document.getElementById('stage').textContent=stage;document.getElementById('qcount').textContent=`Question ${idx+1} of ${queue.length}`;document.getElementById('question').innerHTML=`<span class="pill">${current.topic}</span><span class="pill">${stage}</span><br><br>${current.q}`;document.getElementById('solution').innerHTML='';document.getElementById('examProgress').style.width=((idx+1)/queue.length*100)+'%'}
+function reveal(){if(!current)return;document.getElementById('solution').innerHTML=`<div class="solution"><b>Worked solution</b><br>${current.sol}</div>`}
+function mark(ok){if(!current)return;stats.answered++;if(ok){stats.correct++;stats.streak++}else stats.streak=0;updateStats();nextQ()}
+function nextQ(){if(!queue.length)return;if(idx<queue.length-1){idx++;renderQ()}else{document.getElementById('question').textContent='Practice set complete. Restart to try another set.';document.getElementById('solution').innerHTML=`<div class="solution">You completed ${queue.length} questions. Correct answers recorded: ${stats.correct} out of ${stats.answered} overall.</div>`;document.getElementById('examProgress').style.width='100%';current=null}}
+function buildPaper(){let type=document.getElementById('paperType').value,ramp=document.getElementById('paperRamp').value;let names=type==='pure'?topics.Pure:type==='statsmech'?[...topics.Statistics,...topics.Mechanics]:Object.values(topics).flat();let list=[];for(let i=0;i<12;i++){let t=names[(i*3+Math.floor(Math.random()*names.length))%names.length],b=getTopicBank(t),level=ramp==='hard'?2+(i%2):Math.min(3,Math.floor(i/4)+1);let x=b[level-1];list.push(`<li><b>${t} · ${['','Foundation','Standard','Challenge'][level]}</b><p>${x[0]}</p><details><summary>Worked solution</summary><p>${x[1]}</p></details></li>`)}document.getElementById('paperName').textContent=(type==='pure'?'Pure-style':type==='statsmech'?'Statistics & Mechanics':'Mixed Year 13')+' practice paper';document.getElementById('paperList').innerHTML=list.join('');document.getElementById('paperResult').classList.remove('hidden')}
+renderTopics();updateStats();
+</script></body></html>

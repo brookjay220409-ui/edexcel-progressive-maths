@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edexcel A Level Maths — Unlimited Practice</title>
+<style>
+:root{--bg:#0b1020;--card:#141d31;--card2:#1b2740;--line:#2b3a58;--txt:#f8fafc;--muted:#a9b5c9;--blue:#38bdf8;--green:#34d399;--yellow:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#080d19,#101827 60%,#0b1020);color:var(--txt);font:15px/1.55 Arial,Helvetica,sans-serif}
+header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 16px}
+.brand{font-weight:900;font-size:18px}.brand b{color:var(--blue)}
+nav{display:flex;gap:7px;overflow:auto;padding:10px 14px;background:#0e1628;border-bottom:1px solid var(--line)}
+nav button{white-space:nowrap;border:0;background:transparent;color:#cbd5e1;padding:9px 12px;border-radius:9px}nav button.active,nav button:hover{background:var(--card2);color:#fff}
+main{max-width:1150px;margin:auto;padding:22px 15px 60px}.page{display:none}.page.active{display:block}
+.hero,.panel,.topic{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}.hero{padding:28px}
+h1{font-size:clamp(28px,7vw,48px);line-height:1.05;margin:0 0 12px}h2{margin-top:0}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px;margin-top:16px}
+.topic{transition:.15s}.topic:hover{transform:translateY(-2px);border-color:#466087}
+.topic h3{margin:0 0 6px}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#263552;color:#cbd5e1;font-size:11px;margin:2px}
+button,.select,input{font:inherit}.btn{border:0;border-radius:9px;padding:10px 14px;background:var(--blue);color:#062033;font-weight:800}.btn.secondary{background:#34435f;color:#fff}.btn.green{background:var(--green);color:#052e1b}.btn.yellow{background:var(--yellow);color:#241a00}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}.select{background:#0d1526;color:#fff;border:1px solid #3a4b6c;border-radius:9px;padding:9px}
+.exam-sheet{background:#fff;color:#111827;border:1px solid #cbd5e1;border-radius:4px;padding:24px;margin:18px 0;font:16px/1.55 Georgia,serif;box-shadow:0 4px 18px #0002}.exam-sheet h3{font:700 19px Arial;margin:0 0 12px}.exam-meta{display:flex;justify-content:space-between;border-bottom:1px solid #9ca3af;padding-bottom:8px;margin-bottom:16px;font:13px Arial;color:#374151}.exam-part{margin:14px 0}.exam-part strong{font-weight:700}.exam-marks{float:right;white-space:nowrap}.exam-work{height:72px;border-bottom:1px solid #d1d5db;margin-top:8px}.exam-diagram{display:block;max-width:100%;height:auto;margin:12px auto;border:1px solid #e5e7eb}.exam-total{background:#e0f2fe;color:#0c4a6e;padding:10px;border-radius:8px;font-weight:800}.q{background:#0e1627;border:1px solid #30405f;border-radius:13px;padding:17px;margin:13px 0}.qhead{font-weight:800;margin-bottom:8px}.marks{color:#93c5fd}.work{width:100%;min-height:80px;background:#090f1c;color:#fff;border:1px solid #34435f;border-radius:8px;padding:9px;margin:8px 0}.ans{display:none;background:#0d241e;border-left:3px solid var(--green);padding:10px;border-radius:6px}.ans.open{display:block}
+.paperbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);padding:15px;border-radius:14px}.timer{font-weight:900;color:#fde68a;font-size:18px}
+.notice{background:#172554;border:1px solid #3730a3;border-radius:10px;padding:11px;margin:12px 0}.score{font-size:18px;font-weight:900}
+footer{text-align:center;color:#718096;padding:25px}
+@media(max-width:600px){.hero,.panel,.topic,.q{padding:14px}nav{padding:7px}.brand{font-size:15px}}
+@media print{header,nav,.controls,.notice,footer,.work,.exam-work{display:none!important}body{background:#fff;color:#000}.page{display:none}.page.active{display:block}.q,.paperbar,.panel{color:#000;background:#fff;border:1px solid #aaa}.exam-sheet{box-shadow:none;border:0;padding:0;break-inside:avoid}.exam-part{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="brand">Edexcel <b>A Level Mathematics</b> — Unlimited Practice</div></header>
+<nav id="nav"></nav>
+
+<main>
+<section id="home" class="page active">
+<div class="hero">
+<h1>Edexcel A Level Maths Practice</h1>
+<p class="muted">Unlimited parameterised practice for every Pure, Statistics and Mechanics topic, plus separate Edexcel-style Paper 1, Paper 2 and Paper 3 practice.</p>
+<div class="controls">
+<button class="btn" onclick="go('topics')">Choose a topic</button>
+<button class="btn secondary" onclick="go('paper1')">Pure Paper 1</button>
+<button class="btn secondary" onclick="go('paper2')">Pure Paper 2</button>
+<button class="btn secondary" onclick="go('paper3')">Statistics & Mechanics</button>
+</div>
+</div>
+<div class="grid">
+<div class="topic"><h3>♾️ Unlimited trials</h3><p class="muted">Values are regenerated. The generator deliberately avoids repeating the immediately previous version.</p></div>
+<div class="topic"><h3>📚 All Edexcel A Level topics</h3><p class="muted">10 Pure topics + 5 Statistics topics + 4 Mechanics topics.</p></div>
+<div class="topic"><h3>📝 3 papers</h3><p class="muted">Paper 1 Pure, Paper 2 Pure, and Paper 3 Statistics & Mechanics.</p></div>
+<div class="topic"><h3>⏱️ Exam mode</h3><p class="muted">100-mark papers with a 2-hour timer, matching the Pearson specification.</p></div>
+</div>
+</section>
+
+<section id="topics" class="page">
+<h2>All Edexcel A Level Topics</h2>
+<p class="muted">Select any topic. Choose how many questions you want, then generate another set whenever you finish.</p>
+<div class="grid" id="topicGrid"></div>
+</section>
+
+<section id="practice" class="page">
+<div class="paperbar"><div><h2 id="topicTitle" style="margin:0"></h2><div id="topicDesc" class="muted"></div></div><button class="btn" onclick="newTopicSet()">Generate New Set</button></div>
+<div class="controls"><label>Questions <select id="count" class="select"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></label><label>Difficulty <select id="difficulty" class="select"><option>Mixed</option><option>Foundation</option><option>Standard</option><option>Challenge</option></select></label><button class="btn secondary" onclick="window.print()">Print</button></div>
+<div id="topicQs"></div>
+</section>
+
+<section id="paper1" class="page">
+<div class="paperbar"><div><h2 style="margin:0">Edexcel Pure Mathematics 1</h2><div class="muted">100 marks • 2 hours • Paper code 9MA0/01</div></div><div class="timer" id="t1">02:00:00</div></div>
+<div class="controls"><button class="btn" onclick="makePaper('paper1')">Generate New Paper 1</button><button class="btn yellow" onclick="startTimer('t1')">Start / Restart Timer</button><button class="btn secondary" onclick="window.print()">Print</button></div>
+<div class="notice">Original, multi-step practice questions designed to target the reasoning and algebraic demand of A-level Pure papers. Not an official Pearson paper.</div>
+<div id="paper1Qs"></div>
+</section>
+
+<section id="paper2" class="page">
+<div class="paperbar"><div><h2 style="margin:0">Edexcel Pure Mathematics 2</h2><div class="muted">100 marks • 2 hours • Paper code 9MA0/02</div></div><div class="timer" id="t2">02:00:00</div></div>
+<div class="controls"><button class="btn" onclick="makePaper('paper2')">Generate New Paper 2</button><button class="btn yellow" onclick="startTimer('t2')">Start / Restart Timer</button><button class="btn secondary" onclick="window.print()">Print</button></div>
+<div class="notice">A second set of demanding Pure questions, including multi-step calculus, proof, modelling and algebra. Not an official Pearson paper.</div>
+<div id="paper2Qs"></div>
+</section>
+
+<section id="paper3" class="page">
+<div class="paperbar"><div><h2 style="margin:0">Edexcel Paper 3 — Statistics & Mechanics</h2><div class="muted">100 marks • 2 hours • Paper code 9MA0/03</div></div><div class="timer" id="t3">02:00:00</div></div>
+<div class="controls"><button class="btn" onclick="makePaper('paper3')">Generate New Paper 3</button><button class="btn yellow" onclick="startTimer('t3')">Start / Restart Timer</button><button class="btn secondary" onclick="window.print()">Print</button></div>
+<div class="notice">Structured Statistics and Mechanics questions with contextual modelling, interpretation and multi-step calculations. Not an official Pearson paper.</div>
+<div id="paper3Qs"></div>
+</section>
+</main>
+<footer>Edexcel A Level Mathematics 9MA0 revision practice</footer>
+
+<script>
+const TOPICS={
+proof:{name:"1. Proof",type:"Pure",desc:"Deduction, exhaustion, counterexamples and contradiction"},
+algebra:{name:"2. Algebra and Functions",type:"Pure",desc:"Algebra, functions, graphs, equations, inequalities and transformations"},
+coord:{name:"3. Coordinate Geometry",type:"Pure",desc:"Lines, circles, intersections and coordinate methods"},
+seq:{name:"4. Sequences and Series",type:"Pure",desc:"Arithmetic/geometric sequences, sums, sigma notation and binomial links"},
+trig:{name:"5. Trigonometry",type:"Pure",desc:"Identities, equations, radians, graphs and compound/double-angle results"},
+logs:{name:"6. Exponentials and Logarithms",type:"Pure",desc:"Exponential/log laws, equations and modelling"},
+diff:{name:"7. Differentiation",type:"Pure",desc:"First principles, rules, stationary points, tangents and connected rates"},
+integ:{name:"8. Integration",type:"Pure",desc:"Integration, areas, substitution, parts and differential equations"},
+num:{name:"9. Numerical Methods",type:"Pure",desc:"Iteration, Newton-Raphson and numerical integration"},
+vectors:{name:"10. Vectors",type:"Pure",desc:"2D/3D vectors, lines, angles and intersections"},
+sampling:{name:"Statistics 1. Statistical Sampling",type:"Statistics",desc:"Sampling methods and sampling issues"},
+data:{name:"Statistics 2. Data Presentation & Interpretation",type:"Statistics",desc:"Data, diagrams, measures and interpretation"},
+prob:{name:"Statistics 3. Probability",type:"Statistics",desc:"Probability rules, conditional probability and tree/diagram methods"},
+dist:{name:"Statistics 4. Statistical Distributions",type:"Statistics",desc:"Discrete/continuous distributions and normal distribution"},
+hyp:{name:"Statistics 5. Statistical Hypothesis Testing",type:"Statistics",desc:"Hypothesis tests, critical regions, errors and conclusions"},
+units:{name:"Mechanics 6. Quantities & Units",type:"Mechanics",desc:"SI units, dimensions and mechanics quantities"},
+kin:{name:"Mechanics 7. Kinematics",type:"Mechanics",desc:"Motion, displacement, velocity, acceleration and SUVAT"},
+forces:{name:"Mechanics 8. Forces & Newton's Laws",type:"Mechanics",desc:"Forces, equilibrium, Newton's laws and connected particles"},
+moments:{name:"Mechanics 9. Moments",type:"Mechanics",desc:"Moments, couples, equilibrium and rods/beams"}
+};
+
+const r=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const choose=a=>a[r(0,a.length-1)];
+const uniqueKey=o=>JSON.stringify(o.text);
+const last={};
+
+function P(text,ans,marks){return {text,ans,marks};}
+
+function gen(topic){
+let x;
+switch(topic){
+case"proof":
+x=choose([
+P(`Prove that ${r(2,9)}n+${r(1,8)} is odd for every integer n.`,`Write the expression as 2k+1 by considering the parity of n.`,3),
+P(`Disprove the statement: “n²+n+${r(1,5)} is always prime.”`,`Give a suitable integer n for which the expression is composite.`,2),
+P(`Prove by deduction that the product of two even integers is even.`,`Let the integers be 2a and 2b. Their product is 4ab = 2(2ab), hence even.`,2)
+]);break;
+case"algebra":
+{let a=r(2,9),b=r(1,8),c=r(2,7);x=choose([
+P(`Solve ${a}x+${b}=${a*c+b}.`,`x=${c}`,2),
+P(`Solve x²-${a+b}x+${a*b}=0.`,`x=${a} or x=${b}`,3),
+P(`Find the inverse of f(x)=${a}x+${b}.`,`f⁻¹(x)=(x-${b})/${a}`,3),
+P(`Given f(x)=${a}x-${b}, find f(${c}).`,`f(${c})=${a*c-b}`,1)
+]);}break;
+case"coord":
+{let m=r(-7,7)||3,c=r(-6,6),x1=r(-4,4),y1=r(-4,4),rad=r(2,7);x=choose([
+P(`Find the equation of the line with gradient ${m} passing through (${x1},${y1}).`,`y-${y1}=${m}(x-${x1})`,3),
+P(`Find the equation of a circle centred at (${x1},${y1}) with radius ${rad}.`,`(x-${x1})²+(y-${y1})²=${rad*rad}`,2),
+P(`Find the gradient of y=${m}x+${c}.`,`Gradient = ${m}`,1)
+]);}break;
+case"seq":
+{let a=r(1,9),d=r(2,7),n=r(5,15),q=r(2,5);x=choose([
+P(`Find the ${n}th term of an arithmetic sequence with first term ${a} and common difference ${d}.`,`uₙ=${a}+(${n}-1)(${d})`,2),
+P(`Find S${n} for an arithmetic sequence with a=${a}, d=${d}.`,`Sₙ=n/2[2a+(n-1)d]`,3),
+P(`A geometric sequence has first term ${a} and ratio ${q}. State uₙ.`,`uₙ=${a}(${q})^(n-1)`,2)
+]);}break;
+case"trig":
+{let ang=choose([30,45,60]),k=r(2,6);x=choose([
+P(`Solve sin θ = ${ang===30?"1/2":ang===45?"√2/2":"√3/2"} for 0°≤θ<360°.`,`Use the sine graph and CAST: the corresponding angles are ${ang}° and ${180-ang}° where appropriate.`,3),
+P(`Simplify sin²x+cos²x.`,`1`,1),
+P(`If tan θ=${k}, find sec²θ.`,`sec²θ=1+tan²θ=${1+k*k}`,2),
+P(`Convert ${k}π/3 radians to degrees.`,`${k}×60° = ${k*60}°`,1)
+]);}break;
+case"logs":
+{let a=r(2,8),b=r(2,5);x=choose([
+P(`Simplify ln(${a})+ln(${b}).`,`ln(${a*b})`,1),
+P(`Solve eˣ=${a}.`,`x=ln(${a})`,1),
+P(`Solve ln x=${b}.`,`x=e^${b}`,1),
+P(`Solve ${a}eˣ=${b}.`,`x=ln(${b}/${a})`,2)
+]);}break;
+case"diff":
+{let a=r(2,8),n=r(2,5),v=r(1,4);x=choose([
+P(`Differentiate y=${a}x^${n}.`,`dy/dx=${a*n}x^${n-1}`,1),
+P(`Find the gradient of y=x²+${a}x at x=${v}.`,`dy/dx=2x+${a}; at x=${v}, gradient=${2*v+a}`,2),
+P(`Differentiate y=(x+${a})^${n}.`,`dy/dx=${n}(x+${a})^${n-1}`,2),
+P(`Differentiate y=x²eˣ.`,`dy/dx=eˣ(x²+2x)`,2)
+]);}break;
+case"integ":
+{let a=r(2,8),n=r(1,4),u=r(2,7);x=choose([
+P(`Integrate ${a}x^${n} dx.`,`(${a}/${n+1})x^${n+1}+C`,2),
+P(`Evaluate ∫₀^${u} x dx.`,`u²/2 = ${u*u/2}`,2),
+P(`Integrate 1/x dx.`,`ln|x|+C`,1),
+P(`Find the area under y=${a}x from x=0 to x=2.`,`∫₀²${a}x dx = ${a*2}`,3)
+]);}break;
+case"num":
+{let a=r(2,7);x=choose([
+P(`State the Newton-Raphson formula.`,`xₙ₊₁=xₙ−f(xₙ)/f′(xₙ)`,2),
+P(`Why is iteration useful?`,`It can obtain numerical approximations to solutions that are not conveniently found analytically.`,2),
+P(`Using xₙ₊₁=${a}+1/xₙ, describe how to obtain the next term.`,`Substitute the current value xₙ into the right-hand side.`,1),
+P(`What is the only numerical integration rule required by the Edexcel specification?`,`The trapezium rule.`,1)
+]);}break;
+case"vectors":
+{let a=r(2,7),b=r(2,7),c=r(1,6);x=choose([
+P(`Find |(${a},${b})|.`,`√(${a*a+b*b})`,2),
+P(`Find vector AB from A(${a},1) to B(1,${b}).`,`AB=(1-${a}, ${b}-1)`,2),
+P(`What is the condition for two vectors to be parallel?`,`One is a scalar multiple of the other.`,1),
+P(`State the vector equation of a straight line.`,`r=a+λb`,1)
+]);}break;
+case"sampling":x=choose([P(`Name a sampling method where every member has an equal chance of selection.`,`Simple random sampling.`,1),P(`Give one disadvantage of convenience sampling.`,`It can be biased because the sample may not represent the population.`,1),P(`What is stratified sampling designed to preserve?`,`The proportions of different groups/strata in the population.`,1)]);break;
+case"data":{let a=r(4,10),b=r(1,6);x=choose([P(`State the mean of ${a}, ${a+b}, ${a+2*b}.`,`The mean is (3a+3b)/3=a+b.`,2),P(`What does a positive skew indicate about a distribution?`,`A longer tail toward larger values.`,1),P(`What is the purpose of a cumulative frequency graph?`,`To show the number of observations at or below given values and help estimate medians/percentiles.`,2)]);}break;
+case"prob":{let p=r(1,8)/10;x=choose([P(`If P(A)=${p}, find P(A').`,`1-${p}=${(1-p).toFixed(1)}`,1),P(`State the addition rule for two events A and B.`,`P(A∪B)=P(A)+P(B)-P(A∩B).`,2),P(`When are A and B independent?`,`P(A∩B)=P(A)P(B), equivalently P(A|B)=P(A).`,2)]);}break;
+case"dist":{let n=r(5,12),p=choose([0.2,0.3,0.4,0.5]);x=choose([P(`For X~Bin(${n},${p}), state E(X).`,`E(X)=np=${(n*p).toFixed(1)}`,1),P(`For X~Bin(${n},${p}), state Var(X).`,`Var(X)=np(1-p)=${(n*p*(1-p)).toFixed(2)}`,2),P(`What distribution is commonly used to model continuous measurements such as heights?`,`The normal distribution can be appropriate when its assumptions are reasonable.`,1)]);}break;
+case"hyp":x=choose([P(`What is the null hypothesis?`,`A statement about a population parameter that is tested as the basis for the test.`,1),P(`What does a p-value represent?`,`The probability, assuming H₀ is true, of obtaining a result at least as extreme as the observed result.`,2),P(`What is a Type I error?`,`Rejecting H₀ when H₀ is actually true.`,1)]);break;
+case"units":x=choose([P(`Give the SI unit of force.`,`newton (N)`,1),P(`Give the SI unit of acceleration.`,`m s⁻²`,1),P(`What is the SI unit of momentum?`,`kg m s⁻¹`,1)]);break;
+case"kin":{let u=r(2,10),a=r(1,4),t=r(2,6);x=choose([P(`A particle starts with speed ${u} m/s and accelerates at ${a} m/s² for ${t}s. Find its final speed.`,`v=u+at=${u}+${a}(${t})=${u+a*t} m/s`,2),P(`Using s=ut+½at² with u=${u}, a=${a}, t=${t}, find s.`,`s=${u*t}+½(${a})(${t}²)=${u*t+.5*a*t*t} m`,3)]);}break;
+case"forces":{let m=r(2,8),a=r(1,5);x=choose([P(`A mass of ${m} kg accelerates at ${a} m/s². Find the resultant force.`,`F=ma=${m*a} N`,1),P(`State Newton's second law.`,`The resultant force equals mass × acceleration: F=ma.`,1),P(`What is the weight of a mass m near Earth?`,`W=mg.`,1)]);}break;
+case"moments":{let F=r(10,60),d=r(1,5);x=choose([P(`A force of ${F} N acts perpendicular to a pivot at ${d} m. Find the moment.`,`Moment=Fd=${F*d} N m`,2),P(`State the principle of moments for equilibrium.`,`Sum of clockwise moments = sum of anticlockwise moments.`,1),P(`What is a couple?`,`Two equal, opposite and parallel forces separated by a perpendicular distance.`,1)]);}break;
+}
+let key=uniqueKey(x), tries=0; while(last[topic]===key&&tries<20){x=gen(topic);tries++;key=uniqueKey(x)} last[topic]=key; return x;
+}
+
+function questionHTML(item,i,id){return `<div class="q"><div class="qhead">${i}. ${item.text} <span class="marks">[${item.marks} mark${item.marks==1?"":"s"}]</span></div><textarea class="work" placeholder="Show your working here..."></textarea><button class="btn secondary" onclick="document.getElementById('${id}').classList.toggle('open')">Show / hide answer</button><div id="${id}" class="ans"><b>Answer / method:</b><br>${item.ans}</div></div>`}
+
+function renderTopics(){
+document.getElementById("topicGrid").innerHTML=Object.entries(TOPICS).map(([k,t])=>`<div class="topic"><span class="pill">${t.type}</span><h3>${t.name}</h3><p class="muted">${t.desc}</p><button class="btn" onclick="openTopic('${k}')">Practise this topic</button></div>`).join("");
+}
+function openTopic(k){window.topic=k;document.getElementById("topicTitle").textContent=TOPICS[k].name;document.getElementById("topicDesc").textContent=TOPICS[k].desc;go("practice");newTopicSet()}
+function newTopicSet(){let k=window.topic||"algebra",n=+document.getElementById("count").value,html="";for(let i=1;i<=n;i++)html+=questionHTML(gen(k),i,`a${Date.now()}_${i}`);document.getElementById("topicQs").innerHTML=html}
+
+function go(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.id===id));if(id==="topics")renderTopics();if(id==="paper1"&&!document.getElementById("paper1Qs").children.length)makePaper("paper1");if(id==="paper2"&&!document.getElementById("paper2Qs").children.length)makePaper("paper2");if(id==="paper3"&&!document.getElementById("paper3Qs").children.length)makePaper("paper3");scrollTo({top:0,behavior:"smooth"})}
+
+const pure=["proof","algebra","coord","seq","trig","logs","diff","integ","num","vectors"];
+const applied=["sampling","data","prob","dist","hyp","units","kin","forces","moments"];
+
+// Exam-style question bank: multi-step, unfamiliar contexts and demanding final parts.
+// Every generated paper totals 100 marks. These are original practice questions, not Pearson papers.
+const examPools={
+paper1:[
+()=>({title:'Algebraic methods and functions',parts:[['(a) Express 2x² − 7x + 3 in the form (2x − 1)(x − 3).',2,'(2x − 1)(x − 3)=2x²−7x+3.'],['(b) Hence solve 2(3^t)² − 7(3^t) + 3 = 0, giving exact values of t.',3,'Let u=3^t. Then (2u−1)(u−3)=0, so u=1/2 or 3. Thus t=−log₃2 or t=1.'],['(c) The function f is defined by f(x)=2x²−7x+3 for x≥k. Find the least value of k for which f has an inverse, and state the range of f.',5,'The turning point is x=7/4. Restrict to one side: least k=7/4 for the increasing branch. Minimum value f(7/4)=−25/8, so range [−25/8,∞).']]}),
+()=>({title:'Differentiation and optimisation',diagram:'curve',parts:[['(a) A curve has equation y=x³−6x²+9x+4. Find the coordinates of its stationary points.',4,'dy/dx=3x²−12x+9=3(x−1)(x−3). Hence x=1,3; y=8,4.'],['(b) Determine the nature of each stationary point.',2,'d²y/dx²=6x−12. At x=1 it is negative (maximum); at x=3 positive (minimum).'],['(c) The curve is translated 2 units right and 3 units down. Find the equation of the translated curve and its stationary points.',4,'Y=(X−2)³−6(X−2)²+9(X−2)+1. Stationary points (3,5) and (5,1).']]}),
+()=>({title:'Trigonometric identities and equations',parts:[['(a) Prove that (1−cos 2x)/sin 2x = tan x, stating any restrictions.',3,'Use 1−cos2x=2sin²x and sin2x=2sinx cosx. Cancel to obtain tanx; require denominator nonzero.'],['(b) Solve 2sin²x−3cos x=0 for 0≤x<2π.',4,'Use sin²x=1−cos²x: 2cos²x+3cosx−2=0. (2cosx−1)(cosx+2)=0, so cosx=1/2; x=π/3,5π/3.'],['(c) Find the exact area enclosed by y=2sin x and the x-axis between x=0 and x=π.',3,'Area=∫₀^π2sinx dx=[−2cosx]₀^π=4.']]}),
+()=>({title:'Integration and differential equations',parts:[['(a) Find ∫(6x²−4x+3) dx.',2,'2x³−2x²+3x+C.'],['(b) The curve y satisfies dy/dx=3x²−4x+3 and passes through (1,5). Find its equation.',3,'Integrate: y=x³−2x²+3x+C. Substitute (1,5): C=3.'],['(c) Find the exact area between this curve and the line y=3x+1 from x=0 to x=2.',5,'Difference=x³−2x²+2. It changes sign if roots occur; on [0,2] it is positive (minimum check), area=[x⁴/4−2x³/3+2x]₀²=4−16/3+4=8/3.']]}),
+()=>({title:'Sequences, series and binomial expansion',parts:[['(a) The first three terms of a geometric progression are a, ar and ar². Given their sum is 21 and their product is 216, find a and r, where a,r are positive.',4,'Product gives (ar)³=216, so ar=6. Sum a+6+6r=21 with a=6/r; solve 6/r+6+6r=21, giving 2r²−5r+2=0, r=2 or 1/2; a=3 or 12.'],['(b) Expand (1+2x)⁵ up to and including the term in x³.',3,'1+10x+40x²+80x³.'],['(c) State the range of x for which the expansion converges.',3,'This is a finite binomial expansion, so it is valid for all real x.']]}),
+()=>({title:'Vectors and 3D geometry',diagram:'vectors',parts:[['(a) A=(1,−2,3), B=(5,0,−1). Find AB and |AB|.',3,'AB=(4,2,−4), magnitude=√(16+4+16)=6.'],['(b) Find a vector equation of the line through A parallel to (2,1,−2).',2,'r=(1,−2,3)+λ(2,1,−2).'],['(c) Determine whether this line intersects the plane 2x+y−2z=7. If it does, find the point.',5,'Substitute x=1+2λ,y=−2+λ,z=3−2λ: 2+4λ−2+λ−6+4λ=7, so 9λ−6=7, λ=13/9. Point=(35/9,−5/9,1/9).']]}),
+()=>({title:'Proof and algebraic reasoning',parts:[['(a) Prove that the square of any odd integer is congruent to 1 modulo 8.',4,'Let n=2k+1. n²−1=4k(k+1); one of k,k+1 is even, so 8 divides n²−1.'],['(b) Hence prove that if n is odd, n²+4n+7 is divisible by 4 but not by 8.',3,'n²≡1 (mod 8), 4n≡4 (mod 8), so total ≡1+4+7=12≡4 (mod 8).'],['(c) Explain why the result in (b) is sufficient to show the expression is not a perfect square.',3,'A square congruent to 4 mod 8 is possible for even integers, so this claim alone is not sufficient; counterexample/check parity required. For even square m² divisible by 4, m even; modulo 8 an even square is 0 or 4, so further argument needed.']]}),
+()=>({title:'Numerical methods',parts:[['(a) Show that the equation x³+x−5=0 has a root between 1 and 2.',2,'f(1)=−3 and f(2)=5; continuity gives a root.'],['(b) Use Newton–Raphson, starting at x₀=1.5, to find x₂ to 4 decimal places.',5,'f′(x)=3x²+1. x₁=1.5−(−0.125/7.75)=1.516129...; repeat to obtain x₂≈1.5159.'],['(c) Explain one reason the iteration converges rapidly here.',3,'The starting value is close to the root and derivative is nonzero; local quadratic convergence applies.']]}),
+()=>({title:'Exponentials and logarithms',parts:[['(a) Solve 2e^(2x)−7e^x+3=0.',3,'Let u=e^x>0. (2u−1)(u−3)=0; x=ln(1/2) or ln3.'],['(b) A population follows P=Ae^(kt). It grows from 2400 to 3150 in 5 years. Find k to 3 s.f.',3,'3150/2400=e^(5k), k=ln(1.3125)/5≈0.0543.'],['(c) Find the time taken for the population to double, using your value of k.',4,'2=e^(kt), t=ln2/k≈12.8 years.']]}),
+()=>({title:'Coordinate geometry and circles',diagram:'circle',parts:[['(a) Find the equation of the circle with centre (2,−1) passing through (5,3).',2,'Radius²=3²+4²=25; (x−2)²+(y+1)²=25.'],['(b) Find the equations of the tangents to the circle at (5,3).',4,'Radius gradient=4/3, tangent gradient=−3/4. y−3=−3/4(x−5).'],['(c) The tangent meets the x-axis at T. Find the exact coordinates of T.',4,'Set y=0: −3=−3/4(x−5), hence x=9. T=(9,0).']]})
+],
+paper2:[
+()=>({title:'Implicit differentiation and related rates',parts:[['(a) Given x²+xy+y²=19, find dy/dx.',3,'2x+y+x dy/dx+2y dy/dx=0; dy/dx=−(2x+y)/(x+2y).'],['(b) Find the gradient at (2,3).',2,'−(4+3)/(2+6)=−7/8.'],['(c) Find the equation of the normal at (2,3).',2,'Normal gradient 8/7; y−3=8/7(x−2).'],['(d) Find the coordinates of the other intersection of this normal with the curve.',3,'Substitute y=8x/7+5/7 into the curve and solve; one root x=2, the other is obtained from the resulting quadratic.']]}),
+()=>({title:'Parametric equations',diagram:'curve',parts:[['(a) x=2t²−1 and y=t³−3t. Find dy/dx in terms of t.',3,'dy/dt=3t²−3; dx/dt=4t; dy/dx=3(t²−1)/(4t).'],['(b) Find the coordinates of stationary points on the curve.',4,'dy/dt=0 gives t=±1; coordinates (1,2) and (1,−2). Also check dx/dt≠0 there.'],['(c) Find the gradient at t=2.',3,'3(4−1)/(8)=9/8.']]}),
+()=>({title:'Integration by parts',parts:[['(a) Use integration by parts to find ∫x e^(2x) dx.',4,'Choose u=x,dv=e^(2x)dx. Integral=xe^(2x)/2−e^(2x)/4+C.'],['(b) Hence evaluate ∫₀¹ x e^(2x) dx exactly.',3,'At 1: e²/2−e²/4=e²/4; at 0: −1/4. Result=(e²+1)/4.'],['(c) Explain why the answer is positive without using the exact result.',3,'The integrand xe^(2x) is non-negative on [0,1] and positive for x>0.']]}),
+()=>({title:'Trigonometric modelling',parts:[['(a) Express 5sinθ+12cosθ in the form R sin(θ+α), where R>0 and 0<α<π/2.',3,'R=13, cosα=5/13, sinα=12/13; α=tan⁻¹(12/5).'],['(b) Find the maximum value and the smallest positive θ at which it occurs.',3,'Maximum 13; θ+α=π/2, so θ=π/2−α.'],['(c) Solve 5sinθ+12cosθ=6 for 0≤θ<2π.',4,'13sin(θ+α)=6. Let β=sin⁻¹(6/13); θ=β−α (add 2π if negative) or π−β−α.']]}),
+()=>({title:'Binomial approximation',parts:[['(a) Expand (1−3x)^−2 up to x³.',3,'1+6x+27x²+108x³.'],['(b) State the range of x for which the expansion is valid.',2,'|−3x|<1, so −1/3<x<1/3.'],['(c) Use the expansion to estimate 0.97^−2, giving 5 significant figures.',3,'Set 1−3x=0.97, x=0.01. Estimate 1+0.06+0.0027+0.000108=1.062808≈1.0628.'],['(d) Explain why the estimate is an over/under estimate.',2,'Next term is positive for x>0, so truncating gives an underestimate.']]}),
+()=>({title:'Differential equations and modelling',parts:[['(a) Solve dy/dx=ky, given y=12 when x=0.',3,'y=12e^(kx).'],['(b) Given y=30 when x=4, find k.',3,'30=12e^(4k), k=(1/4)ln(2.5).'],['(c) Find the value of x when y=60.',2,'60=12e^(kx), x=ln5/k.'],['(d) State one limitation of this model.',2,'It assumes a constant proportional growth rate; real growth may be limited by resources.']]}),
+()=>({title:'Proof by contradiction',parts:[['(a) Assume √6 is rational and write it as a fraction in its lowest terms.',2,'Assume √6=a/b with coprime positive integers a,b.'],['(b) Show that 2 divides a and 3 divides a.',4,'a²=6b², so 2|a and 3|a (prime divisibility). Thus 6|a.'],['(c) Deduce a contradiction and complete the proof.',4,'Write a=6k. Then 36k²=6b², so b²=6k², giving 2|b and 3|b. This contradicts coprimality.']]}),
+()=>({title:'Vectors: intersections and angles',parts:[['(a) Find the acute angle between vectors a=(1,2,2) and b=(2,−1,2).',3,'a·b=4; |a|=3, |b|=3, cosθ=4/9, θ≈63.6°.'],['(b) Find a vector perpendicular to both a and b.',3,'Cross product a×b=(6,2,−5), or its negative.'],['(c) Find the area of the parallelogram formed by a and b.',4,'|a×b|=√(36+4+25)=√65.']]}),
+()=>({title:'Numerical integration',parts:[['(a) State the trapezium rule for n equal strips.',2,'∫ₐᵇ y dx≈h/2[y₀+yₙ+2(y₁+...+yₙ₋₁)].'],['(b) Use the table x: 0,1,2,3,4 and y: 2,3.1,4.8,7.5,12 to estimate the integral from 0 to 4.',4,'h=1; estimate=1/2[2+12+2(3.1+4.8+7.5)]=22.8.'],['(c) State whether this is likely an overestimate or underestimate if the curve is concave upwards throughout.',2,'For concave-up curves, trapezia lie above the curve: overestimate.'],['(d) Explain how doubling the number of strips may affect accuracy.',2,'Usually improves the approximation by reducing strip width, though it is not exact.']]}),
+()=>({title:'Functions and composite transformations',parts:[['(a) f(x)=2x−3 and g(x)=√(x+1). Find gf(x) and its domain.',3,'gf(x)=√(2x−2); domain x≥1.'],['(b) Find (gf)^−1(x).',3,'y=√(2x−2); y²=2x−2; x=(y²+2)/2. Inverse=(x²+2)/2, x≥0.'],['(c) Solve gf(x)=4 and interpret the solution using the inverse.',2,'√(2x−2)=4 gives x=9; this equals (gf)^−1(4).'],['(d) State the range of gf.',2,'[0,∞).'] ]})
+],
+paper3:[
+()=>({title:'Statistics: hypothesis testing',parts:[['(a) A manufacturer claims that 40% of customers prefer product A. In a random sample of 80, 42 prefer A. State suitable hypotheses for a test at the 5% level.',2,'H₀:p=0.4; H₁:p≠0.4.'],['(b) State the distribution of X under H₀ and calculate the appropriate tail probability.',3,'X~B(80,0.4). Use P(X≥42) and P(X≤22) for a two-tailed test (or twice the smaller tail, with exact convention).'],['(c) Carry out the test and state your conclusion in context.',3,'Compare the two-tailed p-value with 0.05; reject H₀ only if it is below 0.05. Conclude in context.'],['(d) Explain the meaning of a Type I error here.',2,'Concluding that the preference proportion differs from 0.4 when it is actually 0.4.']]}),
+()=>({title:'Statistics: normal distribution',parts:[['(a) X~N(72, 8²). Find P(X>84).',2,'Standardise: z=1.5; probability=1−Φ(1.5)≈0.0668.'],['(b) Find c such that P(X<c)=0.90.',3,'c=72+8(1.2816)≈82.3.'],['(c) A sample of 25 independent observations is taken. State the distribution of the sample mean and find P(X̄>75).',3,'X̄~N(72,8²/25); z=1.875; probability≈0.0304.'],['(d) State an assumption required.',2,'Observations are independent and from the stated normal population.']]}),
+()=>({title:'Statistics: conditional probability',diagram:'tree',parts:[['(a) Given P(A)=0.6, P(B|A)=0.7 and P(B|A′)=0.2, find P(B).',3,'P(B)=0.6(0.7)+0.4(0.2)=0.50.'],['(b) Find P(A|B).',3,'P(A∩B)/P(B)=0.42/0.50=0.84.'],['(c) Determine whether A and B are independent, giving a reason.',2,'Not independent: P(B|A)=0.7≠P(B)=0.5.'],['(d) Find P(A′∩B′).',2,'P(A′)P(B′|A′)=0.4×0.8=0.32.']]}),
+()=>({title:'Mechanics: connected particles',diagram:'pulley',parts:[['(a) Two particles of masses 3 kg and 5 kg are connected by a light inextensible string over a smooth pulley. Find the acceleration when released.',4,'a=(5−3)g/(5+3)=g/4≈2.45 m s⁻².'],['(b) Find the tension in the string.',3,'For 3 kg moving up: T−3g=3a, so T=3(g+a)≈36.8 N.'],['(c) State two modelling assumptions used.',3,'Light inextensible string; smooth pulley; particles treated as point masses (any two).']]}),
+()=>({title:'Mechanics: projectiles',diagram:'projectile',parts:[['(a) A particle is projected from level ground at 20 m s⁻¹ at 30° above horizontal. Find the time of flight.',3,'Vertical component=10 m s⁻¹. T=2u_y/g=20/9.8≈2.04 s.'],['(b) Find the horizontal range.',3,'Horizontal speed=20cos30°. Range=20cos30°×2.04≈35.3 m.'],['(c) Find the maximum height.',2,'H=u_y²/(2g)=100/19.6≈5.10 m.'],['(d) State why air resistance changes the result.',2,'It reduces horizontal speed and changes the trajectory; the path is no longer the ideal parabola.']]}),
+()=>({title:'Mechanics: moments and equilibrium',diagram:'beam',parts:[['(a) A uniform horizontal beam of length 4 m and weight 120 N is supported at its ends. A 200 N load is placed 1 m from the left end. Find the reactions.',5,'Taking moments about left: Rᵦ×4=120×2+200×1, so Rᵦ=110 N. Vertical equilibrium gives Rₐ=210 N.'],['(b) The 200 N load is moved. Find its position so that the right reaction is 150 N.',3,'Rᵦ×4=120×2+200x; 600=240+200x, x=1.8 m from left.'],['(c) State the conditions for equilibrium of a rigid body in a plane.',2,'Resultant force is zero and resultant moment about any point is zero.']]}),
+()=>({title:'Mechanics: variable acceleration',parts:[['(a) A particle moves in a straight line with acceleration a=6t−4. Given v=3 when t=0, find v in terms of t.',3,'Integrate: v=3t²−4t+3.'],['(b) Find the first time after t=0 when the particle is instantaneously at rest, if one exists.',3,'Solve 3t²−4t+3=0; discriminant=16−36<0, so it never comes to rest.'],['(c) Find displacement from t=0 to t=2.',2,'s= t³−2t²+3t+C; change=8−8+6=6 m.'],['(d) Find the total distance travelled from 0 to 2.',2,'Velocity is always positive (quadratic discriminant negative and leading coefficient positive), so distance=6 m.']]}),
+()=>({title:'Statistics: binomial model and approximation',parts:[['(a) X~B(120,0.08). State the mean and variance.',2,'Mean=9.6; variance=120(0.08)(0.92)=8.832.'],['(b) State a suitable approximating distribution and its parameter.',2,'Poisson(λ=9.6), since n large and p small.'],['(c) Use the approximation to estimate P(X≤2).',3,'e^(−9.6)(1+9.6+9.6²/2)≈0.0027.'],['(d) Give one reason the approximation may be reasonable.',3,'Large n, small p, with np moderate; independent Bernoulli trials.']]}),
+()=>({title:'Mechanics: friction on an inclined plane',diagram:'slope',parts:[['(a) A 6 kg block rests on a rough plane inclined at 25° to the horizontal. Find the normal reaction.',2,'R=6g cos25°≈53.3 N.'],['(b) Given coefficient of friction μ=0.3, determine whether the block remains at rest when released.',4,'Down-slope component=6g sin25°≈24.9 N. Maximum friction=μR≈16.0 N, so it slides down.'],['(c) Find its acceleration down the plane.',4,'6g sin25°−μ(6g cos25°)=6a; a=g(sin25°−0.3cos25°)≈1.49 m s⁻².']]}),
+()=>({title:'Statistics: sampling and interpretation',parts:[['(a) A school wants to estimate the proportion of students who cycle to school. Describe a suitable sampling method using year groups as strata.',3,'Obtain year-group sizes, choose a random sample within each year in proportion to size, combine results.'],['(b) Explain why a voluntary response sample may be biased.',2,'Those with strong opinions or particular habits may be more likely to respond.'],['(c) A 95% confidence interval for a population proportion is (0.31,0.43). Interpret this interval.',2,'The method gives intervals containing the true population proportion in 95% of repeated samples; this interval estimates it between 0.31 and 0.43.'],['(d) State one factor that would reduce the width of the interval.',3,'Increase sample size (or use a lower confidence level).'] ]})
+]};
+function diagramSVG(kind){
+const common='fill="none" stroke="#111827" stroke-width="2.2"';
+if(kind==='circle')return `<svg class="exam-diagram" width="330" height="190" viewBox="0 0 330 190"><circle cx="130" cy="95" r="65" ${common}/><line x1="130" y1="95" x2="190" y2="55" ${common}/><line x1="190" y1="55" x2="270" y2="175" ${common}/><circle cx="190" cy="55" r="3" fill="#111827"/><text x="198" y="48" font-size="13">P(5, 3)</text><text x="138" y="110" font-size="13">C</text></svg>`;
+if(kind==='vectors')return `<svg class="exam-diagram" width="330" height="190" viewBox="0 0 330 190"><path d="M45 145 L270 145 M45 145 L45 20" ${common}/><path d="M45 145 L190 55 L250 95" ${common}/><path d="M180 55 l10 0 l-4 10" stroke="#111827" fill="none"/><text x="34" y="160">O</text><text x="195" y="50">B</text><text x="258" y="98">A</text><text x="275" y="160">x</text><text x="25" y="20">y</text></svg>`;
+if(kind==='tree')return `<svg class="exam-diagram" width="330" height="190" viewBox="0 0 330 190"><g ${common}><path d="M35 95 L140 40 M35 95 L140 150 M140 40 L270 15 M140 40 L270 65 M140 150 L270 125 M140 150 L270 175"/></g><g font-size="13" fill="#111827"><text x="8" y="90">Start</text><text x="90" y="48">A (0.6)</text><text x="90" y="155">A′ (0.4)</text><text x="205" y="18">B (0.7)</text><text x="205" y="70">B′ (0.3)</text><text x="205" y="128">B (0.2)</text><text x="205" y="181">B′ (0.8)</text></g></svg>`;
+if(kind==='pulley')return `<svg class="exam-diagram" width="330" height="190" viewBox="0 0 330 190"><path d="M55 25 H275 M165 25 V42" ${common}/><circle cx="165" cy="55" r="18" ${common}/><path d="M147 55 Q110 55 110 90 V140 M183 55 Q220 55 220 90 V140" ${common}/><rect x="92" y="140" width="36" height="28" ${common}/><rect x="202" y="140" width="36" height="28" ${common}/><text x="100" y="158" font-size="12">3kg</text><text x="209" y="158" font-size="12">5kg</text></svg>`;
+if(kind==='projectile')return `<svg class="exam-diagram" width="330" height="190" viewBox="0 0 330 190"><path d="M20 160 H310 M35 160 Q155 -10 285 160" ${common}/><path d="M35 160 L95 105" stroke="#2563eb" stroke-width="2"/><path d="M85 105 l10 0 l-5 10" stroke="#2563eb" fill="none"/><text x="50" y="115" font-size="13">20 m s⁻¹</text><text x="63" y="153" font-size="13">30°</text></svg>`;
+if(kind==='beam')return `<svg class="exam-diagram" width="330" height="150" viewBox="0 0 330 150"><rect x="35" y="62" width="260" height="9" fill="#94a3b8" stroke="#111827"/><path d="M45 71 l-12 22 h24 z M285 71 l-12 22 h24 z" ${common}/><path d="M100 12 V58 M94 48 L100 58 L106 48 M165 12 V58 M159 48 L165 58 L171 48" ${common}/><text x="72" y="12" font-size="12">200 N</text><text x="174" y="12" font-size="12">120 N beam</text><text x="35" y="115" font-size="12">A</text><text x="285" y="115" font-size="12">B</text></svg>`;
+if(kind==='slope')return `<svg class="exam-diagram" width="330" height="170" viewBox="0 0 330 170"><path d="M35 140 L285 140 L285 25 Z" ${common}/><rect x="170" y="65" width="42" height="30" transform="rotate(-27 191 80)" fill="#cbd5e1" stroke="#111827" stroke-width="2"/><path d="M35 140 A35 35 0 0 1 66 124" ${common}/><text x="70" y="137" font-size="13">25°</text><text x="188" y="55" font-size="12">6 kg</text></svg>`;
+return `<svg class="exam-diagram" width="330" height="150" viewBox="0 0 330 150"><path d="M20 120 Q80 20 140 80 T300 45" ${common}/><path d="M20 120 H300" stroke="#64748b" stroke-dasharray="4 4"/><text x="265" y="35" font-size="13">y=f(x)</text></svg>`;
+}
+function examQuestionHTML(q,i){let parts=q.parts.map((p,j)=>`<div class="exam-part"><span class="exam-marks">[${p[1]}]</span><strong>(${String.fromCharCode(97+j)})</strong> ${p[0]}<div class="exam-work"></div><details><summary>Show worked solution</summary><p>${p[2]}</p></details></div>`).join('');return `<article class="exam-sheet"><div class="exam-meta"><span>QUESTION ${i}</span><span>Edexcel A-level Mathematics practice</span></div><h3>${q.title}</h3>${q.diagram?diagramSVG(q.diagram):''}${parts}<p class="exam-total">Total for Question ${i}: 10 marks</p></article>`;}
+function makePaper(which){let pool=examPools[which],html='',used=[];for(let i=0;i<10;i++){let idx=(i+Math.floor(Math.random()*pool.length))%pool.length;while(used.includes(idx)&&used.length<pool.length)idx=(idx+1)%pool.length;used.push(idx);let q=pool[idx]();html+=examQuestionHTML(q,i+1);}document.getElementById(which+'Qs').innerHTML=`<div class="exam-total">100 marks · 10 structured questions · show full working · original exam-style practice</div>${html}`;}
+
+let timers={};
+function startTimer(id){clearInterval(timers[id]);let sec=7200;const el=document.getElementById(id);el.textContent="02:00:00";timers[id]=setInterval(()=>{sec--;let h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;el.textContent=[h,m,s].map(v=>String(v).padStart(2,"0")).join(":");if(sec<=0){clearInterval(timers[id]);alert("Time is up.");}},1000)}
+
+document.getElementById("nav").innerHTML=[["home","Home"],["topics","All Topics"],["paper1","Pure Paper 1"],["paper2","Pure Paper 2"],["paper3","Paper 3"],].map(x=>`<button data-id="${x[0]}" onclick="go('${x[0]}')">${x[1]}</button>`).join("");
+renderTopics();
+</script>
+</body>
+</html>
